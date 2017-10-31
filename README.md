@@ -18,10 +18,20 @@ python seed.py
 
 # Usage Instructions
 
-Notes:
+**Notes**
+
   • BC years are written as negative integers. 500BC —> -500
 
-**Run**
+**Run API**
+
 ```
 python app.py
 ```
+
+**Endpoints**
+
+`/api/characters/<character>` for a list of characters.
+
+`/api/born_on/` for a list of years with a corresponding number of characters born on that given year.
+
+`/api/born_on/<year>` for the amount of characters born on a given year.
