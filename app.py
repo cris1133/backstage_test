@@ -47,9 +47,9 @@ def characters_endpoint(character=None):
 @app.route('/api/born_on/', methods=['GET'])
 def year_endpoint(year=None):
     if year:
-        return jsonify({
+        result = {
             'characters': Character.select().where(Character.born == year).count()
-        })
+        }
     else:
         result = {
             'years': [
@@ -65,13 +65,18 @@ def year_endpoint(year=None):
                 result['years'][i]['year'] = "{} BC".format(result['years'][i]['year'])
             else:
                 result['years'][i]['year'] = "{} AC".format(result['years'][i]['year'])
-        return jsonify(result)
+    return jsonify(result)
 
 
-@app.route('/api/houses/house', methods=['GET'])
 @app.route('/api/houses/', methods=['GET'])
-def house_endpoint(house=None):
-    pass
+def house_endpoint():
+    result = {
+        'houses': [
+            {'number': result[0], 'characters': int(result[1])}
+            for result in db.execute_sql("SELECT house_id, COUNT(character_id) FROM house_character_through GROUP BY house_id;").fetchall()
+        ]
+    }
+    return jsonify(result)
 
 
 if __name__ == '__main__':
