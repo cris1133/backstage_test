@@ -35,3 +35,5 @@ python app.py
 `/api/born_on/` for a list of years with a corresponding number of characters born on that given year.
 
 `/api/born_on/<year>` for the amount of characters born on a given year.
+
+`/api/houses/` for aggregate statistics on the amount of characters for a given house id.
