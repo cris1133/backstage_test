@@ -13,7 +13,6 @@ def characters_endpoint(character=None):
             result = {'characters': [born_near.__dict__['_data']]}
         else:
             years = int(request.args.get('years', 0))
-            print born_near.born
             result = {
                 'characters': [
                     character.__dict__['_data']
@@ -69,7 +68,10 @@ def year_endpoint(year=None):
         return jsonify(result)
 
 
-
+@app.route('/api/houses/house', methods=['GET'])
+@app.route('/api/houses/', methods=['GET'])
+def house_endpoint(house=None):
+    pass
 
 
 if __name__ == '__main__':
