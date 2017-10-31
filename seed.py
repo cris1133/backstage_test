@@ -54,6 +54,7 @@ def load(characters, houses):
     with db.atomic():
         for idx in range(0, len(houses), 100):
             House.insert_many(houses[idx:idx+100]).execute()
+
     with db.atomic():
         for character in characters:
             character_obj = Character.create(name=character['name'], born=character['born'])
@@ -63,9 +64,10 @@ def load(characters, houses):
 
 
 if __name__ == "__main__":
+    houses = scrape('houses')
+    characters = scrape('characters')
+
     Character.create_table(fail_silently=True)
     House.create_table(fail_silently=True)
     House.members.get_through_model().create_table(fail_silently=True)
-    houses = scrape('houses')
-    characters = scrape('characters')
     load(characters, houses)

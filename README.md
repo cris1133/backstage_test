@@ -17,6 +17,10 @@ python seed.py
 ```
 
 # Usage Instructions
+
+Notes:
+  • BC years are written as negative integers. 500BC —> -500
+
 **Run**
 ```
 python app.py
