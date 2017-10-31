@@ -3,8 +3,8 @@ from flask import Flask, jsonify
 app = Flask(__name__)
 
 
-@app.route('/api/years/<year>', methods=['GET'])
-@app.route('/api/years/', methods=['GET'])
+@app.route('/api/born_on/<year>', methods=['GET'])
+@app.route('/api/born_on/', methods=['GET'])
 def years_endpoint(year=None):
     if year:
         return jsonify({
